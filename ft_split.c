@@ -14,85 +14,71 @@
 
 #include "libft.h"
 
-static size_t	get_array_size(const char *s, char c)
+static unsigned int	ft_count_delimited(char const *string, char sep)
 {
-	size_t size;
-	size_t index;
+	char			previous_is_sep;
+	unsigned int	seg_count;
+	unsigned int	i;
 
-	size = 1;
-	index = 0;
-	while (s[index] != 0)
-	{
-		if (s[index] == c)
+	i = 0;
+	seg_count = 0;
+	previous_is_sep = -1;
+	while (string[i])
+		if (string[i++] == sep)
 		{
-			if (index != 0 && s[index - 1] != c)
-			{
-				++size;
-			}
+			if (!previous_is_sep && i != 0)
+				++seg_count;
+			previous_is_sep = 1;
 		}
-		++index;
-	}
-	return (size + 1);
+		else
+			previous_is_sep = 0;
+	seg_count += (previous_is_sep == 0) ? 1 : 0;
+	return (seg_count);
 }
 
-static size_t	get_string(const char *s, char c, char **dest)
+static int			ft_split_core(char ***tab, char const *s, char c)
 {
-	size_t	end;
+	unsigned int	sub_str_lenght;
+	unsigned int	i;
 
-	end = 0;
-	while (s[end] != 0)
-	{
-		if (s[end] == c)
-		{
-			break ;
-		}
-		++end;
-	}
-	*dest = malloc(end);
-	if (*dest == NULL)
+	i = 0;
+	if (!(*tab = ft_calloc((ft_count_delimited(s, c) + 1), sizeof(char *))))
 		return (0);
-	ft_strlcpy(*dest, s, end + 1);
-	return (end);
-}
-
-static void		split_abort_on_error(char **array)
-{
-	size_t index;
-
-	index = 0;
-	while (array[index] != NULL)
-	{
-		free(array[index]);
-		++index;
-	}
-	free(array);
-}
-
-char			**ft_split(const char *s, char c)
-{
-	size_t	array_size;
-	char	**array;
-	size_t	array_index;
-	size_t	s_index;
-
-	array_size = get_array_size(s, c);
-	array = ft_calloc(array_size, sizeof(char *));
-	array_index = 0;
-	s_index = 0;
-	if (array != NULL)
-		while (s[s_index] != 0)
+	while (s != NULL && *s != 0)
+		if (*s != c)
 		{
-			if (s[s_index] != c)
+			sub_str_lenght = 0;
+			while (*s != c && *s != 0)
 			{
-				s_index += get_string(s + s_index, c, array + array_index) - 1;
-				if (array[array_index] == NULL)
-				{
-					split_abort_on_error(array);
-					return (NULL);
-				}
-				++array_index;
+				sub_str_lenght++;
+				s++;
 			}
-			++s_index;
+			if (!((*tab)[i] = ft_calloc((sub_str_lenght + 1), sizeof(char))))
+				return (0);
+			ft_strlcpy((*tab)[i++], s - sub_str_lenght, (sub_str_lenght + 1));
 		}
-	return (array);
+		else
+			s++;
+	(*tab)[i] = NULL;
+	return (1);
+}
+
+char				**ft_split(char const *s, char c)
+{
+	char	**tab;
+	int		i;
+
+	tab = NULL;
+	if (!ft_split_core(&tab, s, c))
+	{
+		if (tab != NULL)
+		{
+			i = 0;
+			while (tab[i] != NULL || tab[i] != 0)
+				free(tab[i++]);
+			free(tab);
+		}
+		return (NULL);
+	}
+	return (tab);
 }
