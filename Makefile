@@ -77,7 +77,7 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(AR) rcs $(NAME) $(OBJS)
 
-%.o: %.c libft.h
+%.o: %.c $(INCLUDES)
 	$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
