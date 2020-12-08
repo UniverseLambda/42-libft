@@ -1,5 +1,5 @@
 .DEFAULT: all
-.PHONY: all clean fclean re libft.a
+.PHONY: all clean fclean re
 .SUFFIXES: .c .o
 
 NAME := libft.a
@@ -8,53 +8,56 @@ CC ?= cc
 AR ?= ar
 
 CFLAGS ?=
-CFLAGS := $(CFLAGS) -Wall -Wextra -Werror
+CFLAGS := $(CFLAGS) -Wall -Wextra -Werror -Iinc
 
-OBJS := ft_atoi.o \
-		ft_bzero.o \
-		ft_calloc.o \
-		ft_isalnum.o \
-		ft_isalpha.o \
-		ft_isascii.o \
-		ft_isdigit.o \
-		ft_isprint.o \
-		ft_itoa.o \
-		ft_memccpy.o \
-		ft_memchr.o \
-		ft_memcmp.o \
-		ft_memcpy.o \
-		ft_memmove.o \
-		ft_memset.o \
-		ft_putchar_fd.o \
-		ft_putendl_fd.o \
-		ft_putnbr_fd.o \
-		ft_putstr_fd.o \
-		ft_split.o \
-		ft_strchr.o \
-		ft_strdup.o \
-		ft_strjoin.o \
-		ft_strlcat.o \
-		ft_strlcpy.o \
-		ft_strlen.o \
-		ft_strmapi.o \
-		ft_strncmp.o \
-		ft_strnstr.o \
-		ft_strrchr.o \
-		ft_strtrim.o \
-		ft_substr.o \
-		ft_tolower.o \
-		ft_toupper.o
-
-
-BONUS_OBJS := ft_lstadd_back.o \
-				ft_lstadd_front.o \
-				ft_lstclear.o \
-				ft_lstdelone.o \
-				ft_lstiter.o \
-				ft_lstlast.o \
-				ft_lstmap.o \
-				ft_lstnew.o \
-				ft_lstsize.o
+OBJS := src/base/ft_atoi.o \
+		src/base/ft_bzero.o \
+		src/base/ft_calloc.o \
+		src/base/ft_isalnum.o \
+		src/base/ft_isalpha.o \
+		src/base/ft_isascii.o \
+		src/base/ft_isdigit.o \
+		src/base/ft_isprint.o \
+		src/base/ft_itoa.o \
+		src/base/ft_memccpy.o \
+		src/base/ft_memchr.o \
+		src/base/ft_memcmp.o \
+		src/base/ft_memcpy.o \
+		src/base/ft_memmove.o \
+		src/base/ft_memset.o \
+		src/base/ft_putchar_fd.o \
+		src/base/ft_putendl_fd.o \
+		src/base/ft_putnbr_fd.o \
+		src/base/ft_putstr_fd.o \
+		src/base/ft_split.o \
+		src/base/ft_strchr.o \
+		src/base/ft_strdup.o \
+		src/base/ft_strjoin.o \
+		src/base/ft_strlcat.o \
+		src/base/ft_strlcpy.o \
+		src/base/ft_strlen.o \
+		src/base/ft_strmapi.o \
+		src/base/ft_strncmp.o \
+		src/base/ft_strnstr.o \
+		src/base/ft_strrchr.o \
+		src/base/ft_strtrim.o \
+		src/base/ft_substr.o \
+		src/base/ft_tolower.o \
+		src/base/ft_toupper.o \
+		src/base/ft_lstadd_back.o \
+		src/base/ft_lstadd_front.o \
+		src/base/ft_lstclear.o \
+		src/base/ft_lstdelone.o \
+		src/base/ft_lstiter.o \
+		src/base/ft_lstlast.o \
+		src/base/ft_lstmap.o \
+		src/base/ft_lstnew.o \
+		src/base/ft_lstsize.o\
+		src/ft_printf/ft_nbr_utils.o \
+		src/ft_printf/ft_parser.o \
+		src/ft_printf/ft_printers_nbr.o \
+		src/ft_printf/ft_printers.o \
+		src/ft_printf/ft_printf.o
 
 all: $(NAME)
 
@@ -71,9 +74,6 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-
-bonus: OBJS := $(OBJS) $(BONUS_OBJS)
-bonus: $(BONUS_OBJS) all
 
 test: all
 	gcc -o test $(NAME) main.c

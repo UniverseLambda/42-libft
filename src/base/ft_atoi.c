@@ -12,8 +12,7 @@
 
 #include <stdlib.h>
 #include <limits.h>
-
-#include "libft.h"
+#include <libft.h>
 
 static int			ft_isspace(int c)
 {
