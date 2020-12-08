@@ -12,7 +12,7 @@
 
 #include <stdlib.h>
 
-#include "libft.h"
+#include <ft_string.h>
 
 static size_t	get_start(char const *s1, char const *set)
 {

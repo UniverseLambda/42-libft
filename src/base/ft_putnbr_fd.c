@@ -12,7 +12,7 @@
 
 #include <unistd.h>
 
-#include "libft.h"
+#include <ft_stdio.h>
 
 static void			print_digit(unsigned int digit, int fd)
 {

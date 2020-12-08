@@ -11,7 +11,8 @@
 /* ************************************************************************** */
 
 #include <ft_parser.h>
-#include <libft.h>
+
+#include <ft_ctype.h>
 
 t_parsing_result		new_result(void)
 {

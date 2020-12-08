@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <ft_string.h>
 
 static size_t	ft_strnlen(const char *str, size_t maxlen)
 {

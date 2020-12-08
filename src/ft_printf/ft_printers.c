@@ -14,7 +14,7 @@
 
 #include <ft_stdio.h>
 #include <ft_parser.h>
-#include <libft.h>
+#include <ft_string.h>
 
 void		wrc(char c)
 {

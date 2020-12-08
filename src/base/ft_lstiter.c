@@ -10,12 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stddef.h>
 
-/*
-** Yep. We purposefully SEGFAULT when lst == NULL, just to be sure we notice it
-** as it is probably a dev error.
-*/
+#include <ft_list.h>
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {

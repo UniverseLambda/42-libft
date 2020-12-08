@@ -16,7 +16,7 @@
 #include <ft_parser.h>
 #include <ft_printers.h>
 
-#include <libft.h>
+#include <ft_ctype.h>
 
 static void		print_digit(unsigned long digit, int caps)
 {

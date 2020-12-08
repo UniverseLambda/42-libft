@@ -12,7 +12,8 @@
 
 #include <stdlib.h>
 
-#include "libft.h"
+#include <ft_string.h>
+#include <ft_stdlib.h>
 
 static unsigned int	ft_count_delimited(char const *string, char sep)
 {

@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <stddef.h>
+
+#include <ft_list.h>
 
 /*
 ** TODO: think about whether it is more convenient to SEGFAULT if lst == NULL or

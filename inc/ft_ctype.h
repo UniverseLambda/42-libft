@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_ctype.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clsaad <clsaad@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/26 09:43:04 by clsaad            #+#    #+#             */
-/*   Updated: 2020/11/26 09:43:05 by clsaad           ###   ########lyon.fr   */
+/*   Created: 2020/12/08 11:38:02 by clsaad            #+#    #+#             */
+/*   Updated: 2020/12/08 11:38:03 by clsaad           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_string.h>
+#ifndef _FT_CTYPE_H
+# define _FT_CTYPE_H
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
-{
-	size_t				index;
-	const unsigned char	*c1 = s1;
-	const unsigned char	*c2 = s2;
+int			ft_isalpha(int c);
+int			ft_isdigit(int c);
+int			ft_isalnum(int c);
+int			ft_isascii(int c);
+int			ft_isprint(int c);
+int			ft_toupper(int c);
+int			ft_tolower(int c);
 
-	if (s1 == s2)
-		return (0);
-	index = 0;
-	while (index < n)
-	{
-		if (c1[index] != c2[index])
-		{
-			return (c1[index] - c2[index]);
-		}
-		++index;
-	}
-	return (0);
-}
+#endif

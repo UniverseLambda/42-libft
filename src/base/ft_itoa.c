@@ -10,10 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-#include "libft.h"
-
+#include <ft_stdlib.h>
+ 
 static size_t	itoa_size(int n)
 {
 	size_t			size;

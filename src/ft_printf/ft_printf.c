@@ -15,8 +15,7 @@
 #include <ft_stdio.h>
 #include <ft_printers.h>
 #include <ft_parser.h>
-
-#include <libft.h>
+#include <ft_ctype.h>
 
 static int			ft_dispatch(t_parsing_result result, va_list args)
 {

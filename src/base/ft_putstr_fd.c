@@ -12,7 +12,8 @@
 
 #include <unistd.h>
 
-#include "libft.h"
+#include <ft_stdio.h>
+#include <ft_string.h>
 
 void		ft_putstr_fd(char *s, int fd)
 {

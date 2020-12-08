@@ -12,7 +12,7 @@
 
 #include <stdlib.h>
 
-#include "libft.h"
+#include <ft_list.h>
 
 /*
 ** TODO: think about whether it is more convenient to SEGFAULT when `lst` is
