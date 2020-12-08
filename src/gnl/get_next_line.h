@@ -1,18 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clsaad <clsaad@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/26 09:55:25 by clsaad            #+#    #+#             */
-/*   Updated: 2020/11/26 09:55:26 by clsaad           ###   ########lyon.fr   */
+/*   Created: 2020/11/25 13:49:33 by clsaad            #+#    #+#             */
+/*   Updated: 2020/11/25 13:49:34 by clsaad           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_ctype.h>
+#ifndef _GET_NEXT_LINE_H
+# define _GET_NEXT_LINE_H
 
-int	ft_isalnum(int c)
+# include <stddef.h>
+# include <unistd.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 32
+# endif
+
+typedef struct		s_static_buff
 {
-	return (ft_isalpha(c) || ft_isdigit(c));
-}
+	char			content[BUFFER_SIZE];
+	ssize_t			index;
+	ssize_t			size;
+	int				fd;
+}					t_static_buff;
+
+#endif

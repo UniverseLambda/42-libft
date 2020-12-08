@@ -10,6 +10,17 @@ AR ?= ar
 CFLAGS ?=
 CFLAGS := $(CFLAGS) -Wall -Wextra -Werror -Iinc
 
+INCLUDES :=	inc/ft_ctype.h \
+			inc/ft_list.h \
+			inc/ft_parser.h \
+			inc/ft_printers.h \
+			inc/ft_stdio.h \
+			inc/ft_stdlib.h \
+			inc/ft_strbuff.h \
+			inc/ft_string.h \
+			src/gnl/get_next_line.h \
+			src/strbuff/strbuff.h
+
 OBJS := src/base/ft_atoi.o \
 		src/base/ft_bzero.o \
 		src/base/ft_calloc.o \
@@ -57,7 +68,9 @@ OBJS := src/base/ft_atoi.o \
 		src/ft_printf/ft_parser.o \
 		src/ft_printf/ft_printers_nbr.o \
 		src/ft_printf/ft_printers.o \
-		src/ft_printf/ft_printf.o
+		src/ft_printf/ft_printf.o \
+		src/gnl/get_next_line.o \
+		src/strbuff/ft_strbuff.o
 
 all: $(NAME)
 
