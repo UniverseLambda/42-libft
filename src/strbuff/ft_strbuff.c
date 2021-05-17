@@ -13,11 +13,28 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-#include "strbuff.h"
+#include <ft_strbuff.h>
 
-t_buff			*create_buffer(void)
+#ifndef BUFFER_SIZE
+# define BUFFER_SIZE 32
+#endif
+
+typedef struct s_bblock
 {
-	t_buff *buff;
+	struct s_bblock	*next;
+	char			data[BUFFER_SIZE];
+}					t_bblock;
+
+typedef struct s_buff
+{
+	size_t			content_size;
+	size_t			buff_size;
+	t_bblock		block;
+}					t_buff;
+
+t_buff	*create_buffer(void)
+{
+	t_buff	*buff;
 
 	buff = malloc(sizeof(t_buff));
 	if (buff != NULL)
@@ -50,7 +67,7 @@ static t_bblock	*get_or_extend_buffer(t_buff *buff, size_t index)
 	return (previous->next);
 }
 
-int				write_char_buffer(t_buff *buff, char c)
+int	write_char_buffer(t_buff *buff, char c)
 {
 	const int	index = buff->content_size / buff->buff_size;
 	t_bblock	*elem;
@@ -63,7 +80,7 @@ int				write_char_buffer(t_buff *buff, char c)
 	return (1);
 }
 
-char			*merge_buffer(t_buff *buff)
+char	*merge_buffer(t_buff *buff)
 {
 	char		*merged;
 	size_t		index;
@@ -92,10 +109,10 @@ char			*merge_buffer(t_buff *buff)
 	return (merged);
 }
 
-void			destroy_buffer(t_buff *buff)
+void	destroy_buffer(t_buff *buff)
 {
-	t_bblock *next_block;
-	t_bblock *tmp;
+	t_bblock	*next_block;
+	t_bblock	*tmp;
 
 	next_block = buff->block.next;
 	while (next_block != NULL)

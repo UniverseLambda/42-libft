@@ -12,7 +12,7 @@
 
 #include <ft_string.h>
 
-char				*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	char			*dup;
 	unsigned int	dup_index;

@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _FT_PARSER_H
-# define _FT_PARSER_H
+#ifndef FT_PARSER_H
+# define FT_PARSER_H
 
 # include <stdint.h>
 # include <stddef.h>
@@ -21,9 +21,8 @@
 # define F_MINUS		0x04
 # define F_WSTAR		0x08
 # define F_PSTAR		0x10
-# define F_SPACE		0x20
 
-typedef struct		s_parsing_result
+typedef struct s_parsing_result
 {
 	uint8_t	flags;
 	int64_t	width;
@@ -33,4 +32,4 @@ typedef struct		s_parsing_result
 
 t_parsing_result	parse_format(const char **format);
 
-#endif
+#endif // FT_PARSER_H

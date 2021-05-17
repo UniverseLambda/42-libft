@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   min.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clsaad <clsaad@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/26 09:49:15 by clsaad            #+#    #+#             */
-/*   Updated: 2020/11/26 09:49:16 by clsaad           ###   ########lyon.fr   */
+/*   Created: 2021/03/17 13:27:01 by clsaad            #+#    #+#             */
+/*   Updated: 2021/03/17 13:27:02 by clsaad           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_string.h>
+#include <ft_norm.h>
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+size_t	ft_min_zu(size_t a, size_t b)
 {
-	size_t	index;
+	if (a < b)
+		return (a);
+	return (b);
+}
 
-	index = 0;
-	if (dest == src)
-	{
-		return (dest);
-	}
-	else if (dest > src)
-	{
-		return (ft_memcpy(dest, src, n));
-	}
-	while (index < n)
-	{
-		((char *)dest)[index] = ((char *)src)[index];
-		++index;
-	}
-	return (dest);
+double	ft_min_d(double a, double b)
+{
+	if (a < b)
+		return (a);
+	return (b);
+}
+
+unsigned long long	ft_min_ull(unsigned long long a, unsigned long long b)
+{
+	if (a < b)
+		return (a);
+	return (b);
 }

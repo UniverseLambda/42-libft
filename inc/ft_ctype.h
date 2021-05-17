@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _FT_CTYPE_H
-# define _FT_CTYPE_H
+#ifndef FT_CTYPE_H
+# define FT_CTYPE_H
 
 int			ft_isalpha(int c);
 int			ft_isdigit(int c);
@@ -21,4 +21,4 @@ int			ft_isprint(int c);
 int			ft_toupper(int c);
 int			ft_tolower(int c);
 
-#endif
+#endif // FT_CTYPE_H

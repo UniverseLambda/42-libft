@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   arraylist_info.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clsaad <clsaad@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/26 09:49:15 by clsaad            #+#    #+#             */
-/*   Updated: 2020/11/26 09:49:16 by clsaad           ###   ########lyon.fr   */
+/*   Created: 2021/03/12 13:10:01 by clsaad            #+#    #+#             */
+/*   Updated: 2021/03/12 13:10:02 by clsaad           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_string.h>
+#include <ft_arraylist.h>
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+void	*arraylist_data(t_arraylist *list)
 {
-	size_t	index;
+	return (list->data);
+}
 
-	index = 0;
-	if (dest == src)
-	{
-		return (dest);
-	}
-	else if (dest > src)
-	{
-		return (ft_memcpy(dest, src, n));
-	}
-	while (index < n)
-	{
-		((char *)dest)[index] = ((char *)src)[index];
-		++index;
-	}
-	return (dest);
+size_t	arraylist_size(t_arraylist *list)
+{
+	return (list->elemcount);
+}
+
+size_t	arraylist_capacity(t_arraylist *list)
+{
+	return (list->capacity);
 }

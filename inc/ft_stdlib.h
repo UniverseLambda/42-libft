@@ -10,13 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _FT_STDLIB_H
-# define _FT_STDLIB_H
+#ifndef FT_STDLIB_H
+# define FT_STDLIB_H
 
 # include <stddef.h>
+
+typedef void *(*	t_calloc)(size_t, size_t);
+typedef void *(*	t_malloc)(size_t);
+typedef void (*		t_free)(void *);
 
 int			ft_atoi(const char *nptr);
 char		*ft_itoa(int n);
 void		*ft_calloc(size_t nmemb, size_t size);
 
-#endif
+#endif // FT_STDLIB_H

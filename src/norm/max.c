@@ -1,37 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strbuff.h                                          :+:      :+:    :+:   */
+/*   max.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clsaad <clsaad@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/08 12:35:40 by clsaad            #+#    #+#             */
-/*   Updated: 2020/12/08 12:35:40 by clsaad           ###   ########lyon.fr   */
+/*   Created: 2021/03/17 13:29:48 by clsaad            #+#    #+#             */
+/*   Updated: 2021/03/17 13:29:51 by clsaad           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _STRBUFF_H
-# define _STRBUFF_H
+#include <ft_norm.h>
 
-# include <stddef.h>
-
-# include <ft_strbuff.h>
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 32
-# endif
-
-typedef struct		s_bblock
+size_t	ft_max_zu(size_t a, size_t b)
 {
-	struct s_bblock	*next;
-	char			data[BUFFER_SIZE];
-}					t_bblock;
+	if (a > b)
+		return (a);
+	return (b);
+}
 
-typedef struct		s_buff
+unsigned long long	ft_max_ull(unsigned long long a, unsigned long long b)
 {
-	size_t			content_size;
-	size_t			buff_size;
-	t_bblock		block;
-}					t_buff;
+	if (a > b)
+		return (a);
+	return (b);
+}
 
-#endif
+double	ft_max_d(double a, double b)
+{
+	if (a > b)
+		return (a);
+	return (b);
+}

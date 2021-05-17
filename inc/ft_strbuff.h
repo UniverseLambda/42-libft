@@ -10,14 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _FT_STRBUFF_H
-# define _FT_STRBUFF_H
+#ifndef FT_STRBUFF_H
+# define FT_STRBUFF_H
 
 typedef struct s_buff	t_buff;
 
-t_buff					*create_buffer();
+t_buff					*create_buffer(void);
 int						write_char_buffer(t_buff *buff, char c);
 char					*merge_buffer(t_buff *buff);
 void					destroy_buffer(t_buff *buff);
 
-#endif
+#endif // FT_STRBUFF_H

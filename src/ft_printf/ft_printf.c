@@ -17,7 +17,7 @@
 #include <ft_parser.h>
 #include <ft_ctype.h>
 
-static int			ft_dispatch(t_parsing_result result, va_list args)
+static int	ft_dispatch(t_parsing_result result, va_list args)
 {
 	if (result.type == 'c')
 		return (ft_printf_char(va_arg(args, int), result));
@@ -34,7 +34,7 @@ static int			ft_dispatch(t_parsing_result result, va_list args)
 	return (0);
 }
 
-static void			ft_interpret_result(t_parsing_result *result, va_list args)
+static void	ft_interpret_result(t_parsing_result *result, va_list args)
 {
 	int				tmp;
 
@@ -58,7 +58,7 @@ static void			ft_interpret_result(t_parsing_result *result, va_list args)
 	}
 }
 
-int					ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
 	int		result;
 	va_list	args;
@@ -69,7 +69,7 @@ int					ft_printf(const char *format, ...)
 	return (result);
 }
 
-int					ft_vprintf(const char *format, va_list args)
+int	ft_vprintf(const char *format, va_list args)
 {
 	int					ccount;
 	t_parsing_result	result;

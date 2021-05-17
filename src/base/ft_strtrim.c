@@ -72,7 +72,7 @@ static size_t	get_end(char const *s1, char const *set, size_t start)
 	return (end);
 }
 
-char			*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	start;
 	size_t	end;

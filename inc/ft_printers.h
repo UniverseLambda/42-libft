@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _FT_PRINTERS_H
-# define _FT_PRINTERS_H
+#ifndef FT_PRINTERS_H
+# define FT_PRINTERS_H
 
 # include <unistd.h>
 
@@ -26,4 +26,4 @@ int			ft_printf_str(char *str, t_parsing_result result);
 int			ft_printf_snbr(long nb, t_parsing_result res);
 int			ft_printf_unbr(unsigned long nb, t_parsing_result res);
 
-#endif
+#endif // FT_PRINTERS_H

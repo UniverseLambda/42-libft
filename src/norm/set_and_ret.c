@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   set_and_ret.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clsaad <clsaad@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/26 09:49:15 by clsaad            #+#    #+#             */
-/*   Updated: 2020/11/26 09:49:16 by clsaad           ###   ########lyon.fr   */
+/*   Created: 2021/03/26 10:14:31 by clsaad            #+#    #+#             */
+/*   Updated: 2021/03/26 10:14:32 by clsaad           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_string.h>
+#include "../../inc/ft_norm.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+void	*set_ptr(void *target, void *value)
 {
-	size_t	index;
+	*((void **)target) = value;
+	return (value);
+}
 
-	index = 0;
-	if (dest == src)
-	{
-		return (dest);
-	}
-	else if (dest > src)
-	{
-		return (ft_memcpy(dest, src, n));
-	}
-	while (index < n)
-	{
-		((char *)dest)[index] = ((char *)src)[index];
-		++index;
-	}
-	return (dest);
+int	set_i(int *target, int value)
+{
+	*target = value;
+	return (value);
+}
+
+int	set_uc(unsigned char *target, unsigned char value)
+{
+	*target = value;
+	return (value);
 }

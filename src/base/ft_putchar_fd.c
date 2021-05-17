@@ -14,15 +14,17 @@
 
 #include <ft_stdio.h>
 
-void		ft_putchar_fd(char c, int fd)
+void	ft_putchar_fd(char c, int fd)
 {
-	ssize_t write_count;
+	ssize_t	write_count;
 
-	while ((write_count = write(fd, &c, 1)) != -1)
+	write_count = write(fd, &c, 1);
+	while (write_count != -1)
 	{
 		if (write_count > 0)
 		{
 			return ;
 		}
+		write_count = write(fd, &c, 1);
 	}
 }

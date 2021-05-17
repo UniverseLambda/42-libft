@@ -17,18 +17,21 @@ static size_t	itoa_size(int n)
 	size_t			size;
 	unsigned int	value;
 
-	size = (n < 0) ? 2 : 1;
+	size = 1;
+	if (n < 0)
+		size = 2;
 	value = n;
 	if (n < 0)
 		value = ~value + 1;
-	while ((value /= 10) != 0)
+	while ((value / 10) != 0)
 	{
+		value /= 10;
 		++size;
 	}
 	return (size + 1);
 }
 
-char			*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	char			*result;
 	size_t			offset;

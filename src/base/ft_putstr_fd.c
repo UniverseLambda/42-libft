@@ -15,18 +15,20 @@
 #include <ft_stdio.h>
 #include <ft_string.h>
 
-void		ft_putstr_fd(char *s, int fd)
+void	ft_putstr_fd(char *s, int fd)
 {
 	ssize_t	read_count;
 	ssize_t	length;
 
 	length = ft_strlen(s);
-	while ((read_count = write(fd, s, length)) != -1)
+	read_count = write(fd, s, length);
+	while (read_count != -1)
 	{
 		length -= read_count;
 		if (length <= 0)
 		{
 			return ;
 		}
+		read_count = write(fd, s, length);
 	}
 }

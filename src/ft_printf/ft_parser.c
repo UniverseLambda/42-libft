@@ -14,9 +14,9 @@
 
 #include <ft_ctype.h>
 
-t_parsing_result		new_result(void)
+static t_parsing_result	new_result(void)
 {
-	t_parsing_result result;
+	t_parsing_result	result;
 
 	result.flags = 0;
 	result.width = 0;
@@ -25,7 +25,7 @@ t_parsing_result		new_result(void)
 	return (result);
 }
 
-static void				parse_precision(const char **fmt, t_parsing_result *res)
+static void	parse_precision(const char **fmt, t_parsing_result *res)
 {
 	if (ft_isdigit(**fmt) || **fmt == '*')
 	{
@@ -40,13 +40,18 @@ static void				parse_precision(const char **fmt, t_parsing_result *res)
 	}
 }
 
-t_parsing_result		parse_format(const char **format)
+t_parsing_result	parse_format(const char **format)
 {
 	t_parsing_result	res;
 
 	res = new_result();
 	while (*(++(*format)) == '-' || (**format) == '0')
-		res.flags |= (**format == '-') ? F_MINUS : F_ZERO;
+	{
+		if (**format == '-')
+			res.flags |= F_MINUS;
+		else
+			res.flags |= F_ZERO;
+	}
 	parse_precision(format, &res);
 	if (**format == '.')
 	{

@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_lstget.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clsaad <clsaad@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/26 09:49:15 by clsaad            #+#    #+#             */
-/*   Updated: 2020/11/26 09:49:16 by clsaad           ###   ########lyon.fr   */
+/*   Created: 2021/01/07 15:21:02 by clsaad            #+#    #+#             */
+/*   Updated: 2021/01/07 15:21:03 by clsaad           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_string.h>
+#include <ft_list.h>
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+void	*ft_lstget(t_list *lst, size_t index)
 {
-	size_t	index;
+	size_t	i;
 
-	index = 0;
-	if (dest == src)
+	i = 0;
+	while (lst != NULL && i < index)
 	{
-		return (dest);
+		lst = lst->next;
+		++i;
 	}
-	else if (dest > src)
-	{
-		return (ft_memcpy(dest, src, n));
-	}
-	while (index < n)
-	{
-		((char *)dest)[index] = ((char *)src)[index];
-		++index;
-	}
-	return (dest);
+	if (lst != NULL)
+		return (lst->content);
+	return (NULL);
 }

@@ -1,34 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   minnz.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clsaad <clsaad@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/26 09:49:15 by clsaad            #+#    #+#             */
-/*   Updated: 2020/11/26 09:49:16 by clsaad           ###   ########lyon.fr   */
+/*   Created: 2021/03/17 13:28:07 by clsaad            #+#    #+#             */
+/*   Updated: 2021/03/17 13:28:09 by clsaad           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_string.h>
-
-void	*ft_memmove(void *dest, const void *src, size_t n)
+unsigned long long	ft_minnz_ull(unsigned long long a, unsigned long long b)
 {
-	size_t	index;
-
-	index = 0;
-	if (dest == src)
-	{
-		return (dest);
-	}
-	else if (dest > src)
-	{
-		return (ft_memcpy(dest, src, n));
-	}
-	while (index < n)
-	{
-		((char *)dest)[index] = ((char *)src)[index];
-		++index;
-	}
-	return (dest);
+	if (a < b && a)
+		return (a);
+	return (b);
 }

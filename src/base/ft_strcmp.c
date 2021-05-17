@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clsaad <clsaad@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/26 09:49:15 by clsaad            #+#    #+#             */
-/*   Updated: 2020/11/26 09:49:16 by clsaad           ###   ########lyon.fr   */
+/*   Created: 2021/01/04 17:30:04 by clsaad            #+#    #+#             */
+/*   Updated: 2021/01/04 17:30:05 by clsaad           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_string.h>
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	size_t	index;
+	const unsigned char	*us1 = (unsigned char *)s1;
+	const unsigned char	*us2 = (unsigned char *)s2;
+	size_t				index;
 
 	index = 0;
-	if (dest == src)
-	{
-		return (dest);
-	}
-	else if (dest > src)
-	{
-		return (ft_memcpy(dest, src, n));
-	}
-	while (index < n)
-	{
-		((char *)dest)[index] = ((char *)src)[index];
+	if (s1 == s2)
+		return (0);
+	while (us1[index] == us2[index] && us1[index] != '\0')
 		++index;
-	}
-	return (dest);
+	return (us1[index] - us2[index]);
 }

@@ -14,7 +14,7 @@
 
 static size_t	ft_strnlen(const char *str, size_t maxlen)
 {
-	size_t size;
+	size_t	size;
 
 	size = 0;
 	while (size < maxlen && str[size] != 0)
@@ -24,10 +24,10 @@ static size_t	ft_strnlen(const char *str, size_t maxlen)
 	return (size);
 }
 
-size_t			ft_strlcat(char *dst, const char *src, size_t size)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	const size_t src_len = ft_strlen(src);
-	const size_t dst_len = ft_strnlen(dst, size);
+	const size_t	src_len = ft_strlen(src);
+	const size_t	dst_len = ft_strnlen(dst, size);
 
 	if (dst_len == size)
 		return (dst_len + src_len);

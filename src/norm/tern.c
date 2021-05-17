@@ -1,34 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   tern.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clsaad <clsaad@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/26 09:49:15 by clsaad            #+#    #+#             */
-/*   Updated: 2020/11/26 09:49:16 by clsaad           ###   ########lyon.fr   */
+/*   Created: 2021/03/17 12:09:24 by clsaad            #+#    #+#             */
+/*   Updated: 2021/03/17 12:09:25 by clsaad           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_string.h>
+#include <ft_norm.h>
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+char	ft_tern_c(int cond, char a, char b)
 {
-	size_t	index;
+	if (cond)
+		return (a);
+	return (b);
+}
 
-	index = 0;
-	if (dest == src)
-	{
-		return (dest);
-	}
-	else if (dest > src)
-	{
-		return (ft_memcpy(dest, src, n));
-	}
-	while (index < n)
-	{
-		((char *)dest)[index] = ((char *)src)[index];
-		++index;
-	}
-	return (dest);
+int	ft_tern_i(int cond, int a, int b)
+{
+	if (cond)
+		return (a);
+	return (b);
+}
+
+uint64_t	ft_tern_u64(int cond, uint64_t a, uint64_t b)
+{
+	if (cond)
+		return (a);
+	return (b);
+}
+
+double	ft_tern_d(int cond, double a, double b)
+{
+	if (cond)
+		return (a);
+	return (b);
 }

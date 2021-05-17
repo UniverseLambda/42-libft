@@ -25,6 +25,7 @@ static unsigned int	ft_count_delimited(char const *string, char sep)
 	seg_count = 0;
 	previous_is_sep = -1;
 	while (string[i])
+	{
 		if (string[i++] == sep)
 		{
 			if (!previous_is_sep && i != 0)
@@ -33,38 +34,41 @@ static unsigned int	ft_count_delimited(char const *string, char sep)
 		}
 		else
 			previous_is_sep = 0;
-	seg_count += (previous_is_sep == 0) ? 1 : 0;
+	}
+	if (previous_is_sep == 0)
+		++seg_count;
 	return (seg_count);
 }
 
-static int			ft_split_core(char ***tab, char const *s, char c)
+static int	ft_split_core(char ***tab, char const *s, char c)
 {
-	unsigned int	sub_str_lenght;
+	unsigned int	sub_str_len;
 	unsigned int	i;
 
 	i = 0;
-	if (!(*tab = ft_calloc((ft_count_delimited(s, c) + 1), sizeof(char *))))
-		return (0);
-	while (s != NULL && *s != 0)
-		if (*s != c)
+	*tab = ft_calloc((ft_count_delimited(s, c) + 1), sizeof(char *));
+	while (*tab != NULL && s != NULL && *s != 0)
+	{
+		if (*s == c)
 		{
-			sub_str_lenght = 0;
-			while (*s != c && *s != 0)
-			{
-				sub_str_lenght++;
-				s++;
-			}
-			if (!((*tab)[i] = ft_calloc((sub_str_lenght + 1), sizeof(char))))
-				return (0);
-			ft_strlcpy((*tab)[i++], s - sub_str_lenght, (sub_str_lenght + 1));
-		}
-		else
 			s++;
-	(*tab)[i] = NULL;
-	return (1);
+			continue ;
+		}
+		sub_str_len = 0;
+		while (*s != c && *s != 0)
+		{
+			sub_str_len++;
+			s++;
+		}
+		(*tab)[i] = ft_calloc((sub_str_len + 1), sizeof(char));
+		if ((*tab)[i] == NULL)
+			return (0);
+		ft_strlcpy((*tab)[i++], s - sub_str_len, (sub_str_len + 1));
+	}
+	return (*tab != NULL);
 }
 
-char				**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char	**tab;
 	int		i;

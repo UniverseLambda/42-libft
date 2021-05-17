@@ -14,18 +14,19 @@
 
 #include <ft_stdio.h>
 
-static void			print_digit(unsigned int digit, int fd)
+static void	print_digit(unsigned int digit, int fd)
 {
 	ft_putchar_fd((digit % 10) + '0', fd);
 }
 
-static int			count_digits(unsigned int nb)
+static int	count_digits(unsigned int nb)
 {
-	int count;
+	int	count;
 
 	count = 1;
-	while ((nb /= 10) != 0)
+	while ((nb / 10) != 0)
 	{
+		nb /= 10;
 		++count;
 	}
 	return (count);
@@ -41,10 +42,10 @@ static unsigned int	treat_and_cast_int(int nb, int fd)
 	return ((unsigned int)nb);
 }
 
-void				ft_putnbr_fd(int nb, int fd)
+void	ft_putnbr_fd(int nb, int fd)
 {
 	unsigned int	uval;
-	unsigned		temp_holder;
+	unsigned int	temp_holder;
 	int				digit_count;
 	int				sub_index;
 

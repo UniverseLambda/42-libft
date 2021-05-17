@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_lstpush_back.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clsaad <clsaad@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/25 13:49:33 by clsaad            #+#    #+#             */
-/*   Updated: 2020/11/25 13:49:34 by clsaad           ###   ########lyon.fr   */
+/*   Created: 2021/01/12 14:02:02 by clsaad            #+#    #+#             */
+/*   Updated: 2021/01/12 14:02:03 by clsaad           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef _GET_NEXT_LINE_H
-# define _GET_NEXT_LINE_H
+#include <ft_list.h>
 
-# include <stddef.h>
-# include <unistd.h>
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 32
-# endif
-
-typedef struct		s_static_buff
+int	ft_lstpush_back(t_list **alist, void *data)
 {
-	char			content[BUFFER_SIZE];
-	ssize_t			index;
-	ssize_t			size;
-	int				fd;
-}					t_static_buff;
+	t_list	*new_elem;
 
-#endif
+	new_elem = ft_lstnew(data);
+	if (new_elem == NULL)
+		return (0);
+	ft_lstadd_back(alist, new_elem);
+	return (1);
+}

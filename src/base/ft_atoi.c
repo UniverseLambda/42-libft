@@ -16,14 +16,14 @@
 #include <ft_stdlib.h>
 #include <ft_ctype.h>
 
-static int			ft_isspace(int c)
+static int	ft_isspace(int c)
 {
 	return (c == '\f'
-			|| c == '\n'
-			|| c == '\r'
-			|| c == '\t'
-			|| c == '\v'
-			|| c == ' ');
+		|| c == '\n'
+		|| c == '\r'
+		|| c == '\t'
+		|| c == '\v'
+		|| c == ' ');
 }
 
 static long long	ft_atoll(const char *nptr)
@@ -53,9 +53,9 @@ static long long	ft_atoll(const char *nptr)
 	return (result);
 }
 
-int					ft_atoi(const char *nptr)
+int	ft_atoi(const char *nptr)
 {
-	const long long result = ft_atoll(nptr);
+	const long long	result = ft_atoll(nptr);
 
 	if (result < INT_MIN || result > INT_MAX)
 	{

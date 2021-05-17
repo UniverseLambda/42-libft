@@ -15,9 +15,20 @@
 
 #include <stdlib.h>
 
+#include <ft_norm.h>
 #include <ft_strbuff.h>
 
-#include "get_next_line.h"
+#ifndef BUFFER_SIZE
+# define BUFFER_SIZE 32
+#endif
+
+typedef struct s_static_buff
+{
+	char			content[BUFFER_SIZE];
+	ssize_t			index;
+	ssize_t			size;
+	int				fd;
+}					t_static_buff;
 
 /*
 ** Reads the next unsigned char from fd. This method uses an internal static
@@ -31,7 +42,7 @@
 ** @see BUFFER_SIZE
 */
 
-int		read_char(int fd)
+int	read_char(int fd)
 {
 	static t_static_buff	buffer = {.size = 0, .fd = -1};
 	unsigned char			c;
@@ -55,7 +66,7 @@ int		read_char(int fd)
 	return ((int)c);
 }
 
-int		get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
 	t_buff	*content;
 	int		c;
@@ -63,23 +74,23 @@ int		get_next_line(int fd, char **line)
 
 	if (BUFFER_SIZE == 0 || line == NULL)
 		return (-1);
-	if ((content = create_buffer()) == NULL)
+	content = create_buffer();
+	if (content == NULL)
 		return (-1);
-	while ((c = read_char(fd)) >= 0)
+	c = read_char(fd);
+	while (c >= 0)
 	{
-		if (c == '\n')
-			break ;
-		if (!write_char_buffer(content, c))
+		if (c == '\n' || !write_char_buffer(content, c))
 		{
-			c = -2;
+			if (c != '\n')
+				c = -2;
 			break ;
 		}
+		c = read_char(fd);
 	}
-	if ((result = merge_buffer(content)) == NULL)
-		c = -2;
+	result = merge_buffer(content);
+	c = ft_tern_i(result == NULL, -2, c);
 	destroy_buffer(content);
 	*line = result;
-	if (c == -2 || (c == -1))
-		return (c + 1);
-	return (1);
+	return (ft_tern_i((c == -2) || (c == -1), c + 1, 1));
 }
